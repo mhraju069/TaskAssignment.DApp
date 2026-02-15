@@ -34,4 +34,9 @@ describe("TaskToken", function () {
         const totalSupply = await instance.totalSupply();
         expect(totalSupply).to.equal(ethers.parseEther("1500"));
     });
+
+
+    it("Non-owner cannot mint tokens", async function () {
+        await expect(instance.connect(user).MintToken(500, user.address)).to.be.reverted;
+    });
 });
