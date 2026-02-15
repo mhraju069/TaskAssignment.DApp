@@ -12,12 +12,12 @@ contract TaskToken is ERC20, Ownable, ERC20Burnable {
     }
 
     function MintToken(uint amount, address receiver) public onlyOwner {
-        _mint(receiver, amount);
-        emit Mint(receiver, amount);
+        _mint(receiver, amount * 10 ** decimals());
+        emit Mint(receiver, amount * 10 ** decimals());
     }
 
     function BurnToken(uint amount) public {
-        _burn(msg.sender,amount);
-        emit Burn(msg.sender,amount);
+        _burn(msg.sender,amount * 10 ** decimals());
+        emit Burn(msg.sender,amount * 10 ** decimals());
     }
 }
