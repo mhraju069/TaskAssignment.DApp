@@ -20,4 +20,8 @@ contract TaskToken is ERC20, Ownable, ERC20Burnable {
         _burn(msg.sender,amount * 10 ** decimals());
         emit Burn(msg.sender,amount * 10 ** decimals());
     }
+
+    function MyBalance() public view returns (uint) {
+        return balanceOf(msg.sender);
+    }
 }
