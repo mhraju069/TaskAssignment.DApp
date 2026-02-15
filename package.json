@@ -9,12 +9,17 @@
     "npm": "^11.10.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "compile": "npx hardhat compile",
+    "test": "npx hardhat test",
+    "coverage": "npx hardhat coverage",
+    "deploy:local": "npx hardhat run deploy/scripts.js",
+    "deploy:sepolia": "npx hardhat run deploy/scripts.js --network sepolia"
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "@openzeppelin/contracts": "^5.4.0"
+    "@openzeppelin/contracts": "^5.4.0",
+    "dotenv": "^17.3.1"
   }
 }
