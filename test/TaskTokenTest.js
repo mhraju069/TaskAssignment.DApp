@@ -58,4 +58,12 @@ describe("TaskToken", function () {
         const totalSupply = await instance.totalSupply();
         expect(totalSupply).to.equal(ethers.parseEther("500"));
     })
+
+
+    //Using built-in function
+    it("Should burn token.(using built-in method)", async function () {
+        await instance.burn(ethers.parseEther("500"));
+        const totalSupply = await instance.totalSupply();
+        expect(totalSupply).to.equal(ethers.parseEther("500"));
+    })
 });
