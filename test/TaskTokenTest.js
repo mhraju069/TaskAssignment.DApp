@@ -6,8 +6,8 @@ describe("TaskToken", function () {
     let owner
     let instance
 
-    
-    before(async function () {
+
+    beforeEach(async function () {
         [owner, user] = await ethers.getSigners();
         const Token = await ethers.getContractFactory("TaskToken");
         instance = await Token.deploy(1000);
@@ -24,4 +24,14 @@ describe("TaskToken", function () {
         expect(await instance.totalSupply()).to.equal(ethers.parseEther("1000"));
     });
 
+
+    it("Owner should mint tokens to a user", async function () {
+        await instance.MintToken(500, user.address);
+
+        const userBalance = await instance.balanceOf(user.address);
+        expect(userBalance).to.equal(ethers.parseEther("500"));
+
+        const totalSupply = await instance.totalSupply();
+        expect(totalSupply).to.equal(ethers.parseEther("1500"));
+    });
 });
