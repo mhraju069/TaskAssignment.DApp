@@ -10,6 +10,11 @@ describe("TaskToken", function () {
         [owner, user] = await ethers.getSigners();
         const Token = await ethers.getContractFactory("TaskToken");
         instance = await Token.deploy(1000);
-        await instance.deployed();
     });
+
+    it("Should have the correct name and symbol", async function () {
+        expect(await instance.name()).to.equal("TaskToken");
+        expect(await instance.symbol()).to.equal("TT");
+    });
+
 });
