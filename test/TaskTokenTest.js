@@ -60,6 +60,12 @@ describe("TaskToken", function () {
     })
 
 
+    it("Shoud return my balance", async function () {
+        const balance = await instance.MyBalance();
+        expect(balance).to.equal(ethers.parseEther("1000"));
+    })
+
+
     //Using built-in function
     it("Should burn token.(using built-in method)", async function () {
         await instance.burn(ethers.parseEther("500"));
