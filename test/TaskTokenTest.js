@@ -39,4 +39,16 @@ describe("TaskToken", function () {
     it("Non-owner cannot mint tokens", async function () {
         await expect(instance.connect(user).MintToken(500, user.address)).to.be.reverted;
     });
+
+
+    it("Should transfer token", async function () {
+
+        await instance.transfer(user.address, ethers.parseEther("500"));
+
+        const userBalance = await instance.balanceOf(user.address);
+        expect(userBalance).to.equal(ethers.parseEther("500"));
+
+        const ownerBalance = await instance.balanceOf(owner.address);
+        expect(ownerBalance).to.equal(ethers.parseEther("500"));
+    });
 });
