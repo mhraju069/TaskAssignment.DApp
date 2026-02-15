@@ -51,4 +51,11 @@ describe("TaskToken", function () {
         const ownerBalance = await instance.balanceOf(owner.address);
         expect(ownerBalance).to.equal(ethers.parseEther("500"));
     });
+
+
+    it("Should burn token", async function () {
+        await instance.BurnToken(500);
+        const totalSupply = await instance.totalSupply();
+        expect(totalSupply).to.equal(ethers.parseEther("500"));
+    })
 });
