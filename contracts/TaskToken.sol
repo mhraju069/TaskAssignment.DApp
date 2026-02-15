@@ -8,17 +8,17 @@ contract TaskToken is ERC20, Ownable, ERC20Burnable {
     event Burn(address indexed from, uint amount);
 
     constructor(uint totalSupply) ERC20("TaskToken", "TT") Ownable(msg.sender) {
-        _mint(msg.sender, totalSupply * 10 ** decimals());
+        _mint(msg.sender, totalSupply);
     }
 
     function MintToken(uint amount, address receiver) public onlyOwner {
-        _mint(receiver, amount * 10 ** decimals());
-        emit Mint(receiver, amount * 10 ** decimals());
+        _mint(receiver, amount);
+        emit Mint(receiver, amount);
     }
 
     function BurnToken(uint amount) public {
-        _burn(msg.sender,amount * 10 ** decimals());
-        emit Burn(msg.sender,amount * 10 ** decimals());
+        _burn(msg.sender, amount);
+        emit Burn(msg.sender, amount);
     }
 
     function MyBalance() public view returns (uint) {
